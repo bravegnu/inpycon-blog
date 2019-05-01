@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{% block pagetitle %}{{article.title}} - {{ super() }} | {% endblock %}
+
+{% block body %}
+<article>
+  <div class="blog">
+    <h1 class="title">{{article.title}}</h1>
+    <div class="meta">
+      <time datetime="{{article.date}}" itemprop="datePublished">
+        <small>Published: {{ article.date.strftime('%B %d, %Y') }}</small>
+      </time>
+    </div>
+
+    {{ article.content }}
+  </div>
+</article>
+{% endblock %}

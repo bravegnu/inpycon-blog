@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block pagetitle %} PyCon India - Blog Archives {% endblock %}
+
+{% block body %}
+{% for article in dates %}
+  <article class="blogpost">
+    <a href="{{SITEURL}}/{{article.url}}">
+      <h2 class="title"> {{article.title}}</h2>
+    </a>
+
+    <div>{{article.summary}}</div>
+
+    <div class="meta">
+      <time datetime="{{article.date}}" itemprop="datePublished">
+      <small>Published: {{ article.date.strftime('%B %d, %Y') }}</small>
+      </time>
+    </div>
+    <a href="{{SITEURL}}/{{article.url}}">Read More</a>
+  </article>
+{% endfor %}
+{% endblock %}

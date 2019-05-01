@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<section class="blogpost-listings">
+{% for article in articles_page.object_list %}
+  {% if article.date.strftime('%Y') == "2019" %}
+    <article class="blogpost">
+      <a href="{{SITEURL}}/{{article.url}}">
+        <h2 class="title"> {{article.title}}</h2>
+      </a>
+
+      <div>{{article.summary}}</div>
+
+      <div class="meta">
+        <time datetime="{{article.date}}" itemprop="datePublished">
+          <small>Published: {{ article.date.strftime('%B %d, %Y') }}</small>
+        </time>
+      </div>
+
+      <a href="{{SITEURL}}/{{article.url}}">Read More</a>
+    </article>
+  {% endif %}
+{% endfor %}
+</section>
+
+<a href="{{SITEURL}}/archives">
+  Archive
+</a>
+
+{% endblock %}
